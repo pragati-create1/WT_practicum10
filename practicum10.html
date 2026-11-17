@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Urban Bloom - DOM Manipulation</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #e8f5e9;
+            padding: 20px;
+        }
+
+        h1 {
+            color: darkgreen;
+        }
+
+        button {
+            background-color: darkgreen;
+            color: white;
+            padding: 10px;
+            border: none;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        input, select {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        #tips {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="heading">Urban Bloom</h1>
+    <h3>Smart Gardening and Farming Tools</h3>
+
+    <h3>Gardening Tips</h3>
+
+    <p id="tips">Click the button to see gardening tips.</p>
+
+    <button onclick="showTip()">Show Tip</button>
+
+    <h3>Gardening Help Form</h3>
+
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <select id="category">
+        <option value="">Select Category</option>
+        <option value="Indoor Gardening">Indoor Gardening</option>
+        <option value="Organic Farming">Organic Farming</option>
+        <option value="Terrace Gardening">Terrace Gardening</option>
+    </select>
+
+    <button onclick="submitForm()">Submit</button>
+
+    <p id="result"></p>
+
+    <h3>Automatic Gardening Tips</h3>
+
+    <button onclick="startTips()">Start Tips</button>
+    <button onclick="stopTips()">Stop Tips</button>
+
+    <button onclick="showMessage()">Show Delayed Message</button>
+    <button onclick="cancelMessage()">Cancel Message</button>
+
+    <script>
+
+        // Query Selector
+        document.querySelector("#heading").innerHTML =
+            "Welcome to Urban Bloom!";
+
+        // onclick and DOM manipulation
+        function showTip() {
+            document.getElementById("tips").innerHTML = "To keep your houseplants thriving, focus on mastering the balance of light, water and environment.";
+        }
+
+        // Interactive Form
+        function submitForm() {
+            let name = document.getElementById("name").value;
+            let category = document.getElementById("category").value;
+
+            if (name == "" || category == "") {
+                document.getElementById("result").innerHTML =
+                    "Please fill all the fields.";
+            }
+            else {
+                document.getElementById("result").innerHTML =
+                    "Hello " + name + "! Your interest is " + category;
+            }
+        }
+
+        // setInterval and clearInterval
+        let interval;
+
+        function startTips() {
+            clearInterval(interval);
+
+            interval = setInterval(function() {
+                document.getElementById("tips").innerHTML =
+                    "Keep your plants healthy!";
+            }, 3000);
+        }
+
+        function stopTips() {
+            clearInterval(interval);
+        }
+
+        // setTimeout and clearTimeout
+        let timeout;
+
+        function showMessage() {
+            timeout = setTimeout(function() {
+                alert("Thank you for visiting Urban Bloom!");
+            }, 3000);
+        }
+
+        function cancelMessage() {
+            clearTimeout(timeout);
+        }
+
+    </script>
+
+</body>
+</html>
